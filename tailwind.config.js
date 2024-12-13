@@ -11,12 +11,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        italianno: ['Italianno', 'sans-serif'],
-        jacques_francois: ['Jacques Francois', 'sans-serif'],
-        
+        italianno: ["Italianno", "sans-serif"],
+        jacques_francois: ["Jacques Francois", "sans-serif"],
       },
     },
   },
   plugins: [],
-}
-
+};
