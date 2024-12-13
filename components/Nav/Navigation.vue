@@ -2,7 +2,7 @@
 
 <template>
         <nav class="">
-      <ul class="flex bg-black bg-opacity-[57%] text-white w-full flex-row space-x-4 items-center justify-center ">
+      <ul class="flex bg-black bg-opacity-[57%] p-4 px-8 text-white w-full flex-col md:flex-row space-x-4 space-y-2 md:space-y-0 items-center justify-center ">
         <li>
           <NuxtLink to="/">Hjem</NuxtLink>
         </li>

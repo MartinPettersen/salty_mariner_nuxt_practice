@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="flex items-center justify-center flex-col">
+  <header class="flex items-center justify-center flex-col z-50 fixed ">
     
     <NavLogo />
     <NavNavigation />
