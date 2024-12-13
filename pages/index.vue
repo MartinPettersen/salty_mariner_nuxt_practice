@@ -21,7 +21,7 @@
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center ">
+    <div class="flex flex-col items-center justify-center md:text-3xl">
 
         <ImageCard :imageUrl="firstImage" alt="fisk på tallerken" >
             <div class="flex items-center justify-center w-[40%]">

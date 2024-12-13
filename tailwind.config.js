@@ -9,7 +9,13 @@ export default {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        italianno: ['Italianno', 'sans-serif'],
+        jacques_francois: ['Jacques Francois', 'sans-serif'],
+        
+      },
+    },
   },
   plugins: [],
 }
