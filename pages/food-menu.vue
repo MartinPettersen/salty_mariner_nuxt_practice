@@ -2,8 +2,10 @@
 import type { SanityDocument } from "@sanity/client";
 
 const MENUS_QUERY = groq`*[
-  _type == "menu"
+  _type == "menu"  && name in ["Forretter", "Hovedretter", "Desserter"]
 ]{_id, name, retter}`;
+
+
 
 const { data: menusRef } = await useSanityQuery<SanityDocument[]>(MENUS_QUERY);
 
