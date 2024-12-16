@@ -9,13 +9,16 @@ export default defineNuxtConfig({
   alias: {
     "@": resolve(__dirname, ".")
   },
+
   css: ["~/assets/main.css"],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   app: {
     head: {
       link: [
@@ -23,5 +26,11 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Italianno&family=Jacques+Francois&display=swap' },
       ]
     }
-  }
+  },
+
+  modules: ['@nuxtjs/sanity'],
+  sanity: {
+    projectId: process.env.VITE_PROJECT_ID,
+    dataset: "production",
+  },
 })
