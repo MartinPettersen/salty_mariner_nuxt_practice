@@ -8,8 +8,27 @@ const content = ref("");
 const email = ref("");
 const name = ref("");
 
-const submitMessage = () => {
-  console.log("submitting ;)");
+const submitMessage = async(event: Event) => {
+  event.preventDefault();
+
+  const url = import.meta.env.VITE_URL;
+  const apiToken = import.meta.env.VITE_API_TOKEN;
+
+  const message = {
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: content.value,
+    }
+
+  const response = await $fetch(`${url}message`, {
+    method: 'POST',
+    headers: { api_token: apiToken || "" },
+    body: message,
+  })
+
+  console.log("response", response)
+
 };
 </script>
 
@@ -23,12 +42,12 @@ const submitMessage = () => {
             <p>E-post: HavSkatt@gmail.com</p>
             <p>Adresse: Fiskebryggen 12, 0150 Oslo.</p>
           </address>
-          <form aria-labelledby="contact-form" class="space-y-4">
+          <form aria-labelledby="contact-form" class="space-y-4" @submit.prevent="submitMessage">
             <div>
               <label for="subject">Emne:</label>
               <input
                 id="subject"
-                class="w-full"
+                class="w-full text-black"
                 placeholder="Emne"
                 v-model="subject"
               />
@@ -37,7 +56,7 @@ const submitMessage = () => {
               <label for="content">Innhold:</label>
               <textarea
                 id="content"
-                class="w-full h-20"
+                class="w-full h-20 text-black"
                 placeholder="Innhold"
                 v-model="content"
               />
@@ -46,7 +65,7 @@ const submitMessage = () => {
               <label for="subject">Navn:</label>
               <input
                 id="name"
-                class="w-full"
+                class="w-full text-black"
                 placeholder="Name"
                 v-model="name"
               />
@@ -55,7 +74,7 @@ const submitMessage = () => {
               <label for="email">E-post:</label>
               <input
                 id="email"
-                class="w-full"
+                class="w-full  text-black"
                 placeholder="Din epost"
                 v-model="email"
               />
@@ -63,7 +82,7 @@ const submitMessage = () => {
             <div class="w-full flex items-center justify-center pt-8">
               <button
                 @click="submitMessage"
-                type="submit"
+                type="button"
                 class="bg-slate-700 p-2 flex items-center justify-center w-[66%]"
               >
                 <p class="font-bold text-lg">Send</p>
