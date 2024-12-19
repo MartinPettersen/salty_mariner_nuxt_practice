@@ -5,7 +5,7 @@ import { ref, watch } from "vue";
 const maxDate = new Date();
 maxDate.setFullYear(maxDate.getFullYear() + 5);
 
-const selectedTable = ref("");
+const selectedTable = ref("test");
 const email = ref("");
 const name = ref("");
 const date = ref(new Date());
@@ -84,7 +84,7 @@ const tableMap = ref({
 <template>
     <ImageCard :imageUrl="firstImage" alt="bilde av insiden av restauranten">
       <div class="flex item-end justify-center">
-        <div class="flex items-center justify-center w-[80%]">
+        <div class="flex items-center justify-center w-[100%]">
           <div class="flex flex-col space-y-4">
             <div class="flex w-full items-center justify-center">
               <h2 class="font-bold text-xl">Bestill Bord</h2>
@@ -99,7 +99,7 @@ const tableMap = ref({
                   <TableTwoSeatTable :taken="false"
                   tableId="showcase1"
                   :selectedTable="selectedTable"
-                  @update:selectedTable="selectedTable = $evet"
+                  @update:selectedTable="selectedTable = $event"
                   />
                 </div>
                 <p>Ledig</p>
@@ -109,7 +109,7 @@ const tableMap = ref({
                   <TableTwoSeatTable :taken="true"
                   tableId="showcase2"
                   :selectedTable="selectedTable"
-                  @update:selectedTable="selectedTable = $evet"/>
+                  @update:selectedTable="selectedTable = $event"/>
                 </div>
                 <p>Opptatt</p>
               </div>
@@ -118,12 +118,13 @@ const tableMap = ref({
                   <TableTwoSeatTable :taken="false"
                   tableId="showcase3"
                   selectedTable="showcase3"
-                  @update:selectedTable="selectedTable = $evet"/>
+                  @update:selectedTable="selectedTable = $event"/>
                 </div>
                 <p>Valgt</p>
               </div>
             </div>
-            tablemap OrderTableForm
+            <TableMap :tableMap="tableMap" :selectedTable="selectedTable" @update:selectedTable="selectedTable = $event"/>
+            OrderTableForm
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ const handleSelection = () => {
     role="button"
     @click="handleSelection"
     :class="[
-      'w-6 h-6 rounded-full',
+      'w-10 h-4 ',
       taken ? 'bg-[#FF6F61]' : (selectedTable == tableId) ? 'bg-[#4A90E2]' : 'bg-gray-200',
       !taken && 'hover:cursor-pointer',
       !taken && 'hover:bg-[#7ab8ff]',
