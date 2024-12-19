@@ -2,6 +2,7 @@
 /// <reference types="../../node_modules/.vue-global-types/vue_3.5_false.d.ts" />
 import type { PropType } from "vue";
 import type { TableMapType } from "~/types/Types";
+import type { Reservation } from "~/types/Types";
 
 const props = defineProps({
   selectedTable: String,
@@ -9,7 +10,16 @@ const props = defineProps({
     type: Object as PropType<TableMapType>,
     required: true,
   },
+  reservations: {
+    type: Array as PropType<Reservation[]>,
+    required: true,
+  }
 });
+
+const checkIfTaken = (tableId: string) => {
+    const match = props.reservations.find(reservation => reservation.tableId === tableId) 
+    return match !== undefined
+  }
 
 const emit = defineEmits(["update:selectedTable"]);
 </script>
@@ -38,7 +48,7 @@ const emit = defineEmits(["update:selectedTable"]);
           <TableFourSeatTable
             :selectedTable="selectedTable"
             :tableId="table.id"
-            :taken="table.taken"
+            :taken="checkIfTaken(table.id)"
             @update:selectedTable="emit('update:selectedTable', $event)"
           />
         </div>
@@ -60,7 +70,7 @@ const emit = defineEmits(["update:selectedTable"]);
           <TableFourSeatTable
             :selectedTable="selectedTable"
             :tableId="table.id"
-            :taken="table.taken"
+            :taken="checkIfTaken(table.id)"
             @update:selectedTable="emit('update:selectedTable', $event)"
           />
         </div>
@@ -77,7 +87,7 @@ const emit = defineEmits(["update:selectedTable"]);
           <TableTwoSeatTable
             :selectedTable="selectedTable"
             :tableId="table.id"
-            :taken="table.taken"
+            :taken="checkIfTaken(table.id)"
             @update:selectedTable="emit('update:selectedTable', $event)"
           />
         </div>
@@ -93,7 +103,7 @@ const emit = defineEmits(["update:selectedTable"]);
           <TableLongTable
             :selectedTable="selectedTable"
             :tableId="table.id"
-            :taken="table.taken"
+            :taken="checkIfTaken(table.id)"
             @update:selectedTable="emit('update:selectedTable', $event)"
           />
         </div>

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import firstImage from "~/assets/todd-diemer-SEFR62Upnqw-unsplash.jpg";
 import { ref, watch } from "vue";
+import type { Reservation } from "~/types/Types";
 
 const maxDate = new Date();
 maxDate.setFullYear(maxDate.getFullYear() + 5);
@@ -9,6 +10,17 @@ const selectedTable = ref("test");
 const email = ref("");
 const name = ref("");
 const date = ref(new Date());
+
+const url = import.meta.env.VITE_URL;
+const apiToken = import.meta.env.VITE_API_TOKEN;
+
+const reservations:Reservation[] = await $fetch(`${url}reservations?date=${date!.value.toLocaleDateString("no").replace(/(\d{2})\.(\d{2})\.(\d{4})/, "$1/$2/" + "$3".slice(-2))}`, {
+    method: "GET",
+    headers: { api_token: apiToken || "" },
+  });
+
+  console.log("response", reservations)
+
 
 const tableMap = ref({
   fourSeatTableRowOne: [
@@ -131,9 +143,10 @@ const tableMap = ref({
           <TableMap
             :tableMap="tableMap"
             :selectedTable="selectedTable"
+            :reservations="reservations"
             @update:selectedTable="selectedTable = $event"
           />
-          <TableOrderTableForm :date="date" :tableId="selectedTable" />
+          <TableOrderTableForm :date="date" :tableId="selectedTable"/>
         </div>
       </div>
     </div>

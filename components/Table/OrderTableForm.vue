@@ -6,6 +6,7 @@ import type { Reservation } from "~/types/Types";
 const props = defineProps({
   date: Date,
   tableId: String,
+  
 });
 
 const email = ref("");
