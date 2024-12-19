@@ -82,51 +82,60 @@ const tableMap = ref({
 });
 </script>
 <template>
-    <ImageCard :imageUrl="firstImage" alt="bilde av insiden av restauranten">
-      <div class="flex item-end justify-center">
-        <div class="flex items-center justify-center w-[100%]">
-          <div class="flex flex-col space-y-4">
-            <div class="flex w-full items-center justify-center">
-              <h2 class="font-bold text-xl">Bestill Bord</h2>
-            </div>
-            <div class="bg-white flex w-full relative overflow-visible">
-              calendar
-            </div>
+  <ImageCard :imageUrl="firstImage" alt="bilde av insiden av restauranten">
+    <div class="flex item-end justify-center">
+      <div class="flex items-center justify-center w-[100%]">
+        <div class="flex flex-col space-y-4">
+          <div class="flex w-full items-center justify-center">
+            <h2 class="font-bold text-xl">Bestill Bord</h2>
+          </div>
+          <div class="bg-white flex w-full relative overflow-visible">
+            calendar
+          </div>
 
-            <div class="flex justify-evenly space-x-3">
-              <div class="flex space-x-1">
-                <div class="border-[1px] rounded-full border-slate-700">
-                  <TableTwoSeatTable :taken="false"
+          <div class="flex justify-evenly space-x-3">
+            <div class="flex space-x-1">
+              <div class="border-[1px] rounded-full border-slate-700">
+                <TableTwoSeatTable
+                  :taken="false"
                   tableId="showcase1"
                   :selectedTable="selectedTable"
                   @update:selectedTable="selectedTable = $event"
-                  />
-                </div>
-                <p>Ledig</p>
+                />
               </div>
-              <div class="flex space-x-1">
-                <div class="border-[1px] rounded-full border-slate-700">
-                  <TableTwoSeatTable :taken="true"
+              <p>Ledig</p>
+            </div>
+            <div class="flex space-x-1">
+              <div class="border-[1px] rounded-full border-slate-700">
+                <TableTwoSeatTable
+                  :taken="true"
                   tableId="showcase2"
                   :selectedTable="selectedTable"
-                  @update:selectedTable="selectedTable = $event"/>
-                </div>
-                <p>Opptatt</p>
+                  @update:selectedTable="selectedTable = $event"
+                />
               </div>
-              <div class="flex space-x-1">
-                <div class="border-[1px] rounded-full border-slate-700">
-                  <TableTwoSeatTable :taken="false"
+              <p>Opptatt</p>
+            </div>
+            <div class="flex space-x-1">
+              <div class="border-[1px] rounded-full border-slate-700">
+                <TableTwoSeatTable
+                  :taken="false"
                   tableId="showcase3"
                   selectedTable="showcase3"
-                  @update:selectedTable="selectedTable = $event"/>
-                </div>
-                <p>Valgt</p>
+                  @update:selectedTable="selectedTable = $event"
+                />
               </div>
+              <p>Valgt</p>
             </div>
-            <TableMap :tableMap="tableMap" :selectedTable="selectedTable" @update:selectedTable="selectedTable = $event"/>
-            OrderTableForm
           </div>
+          <TableMap
+            :tableMap="tableMap"
+            :selectedTable="selectedTable"
+            @update:selectedTable="selectedTable = $event"
+          />
+          <TableOrderTableForm :date="date" :tableId="selectedTable" />
         </div>
       </div>
-    </ImageCard>
+    </div>
+  </ImageCard>
 </template>
