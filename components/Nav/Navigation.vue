@@ -38,8 +38,8 @@ const toggleMenu = () => {
   <button
     @click="toggleMenu"
     :class="[
-      'bg-black bg-opacity-[57%] p-4 px-8 text-white',
-      showMenu ? 'hidden md:flex' : '',
+      'bg-black bg-opacity-[57%] p-4 px-8 text-white md:hidden',
+      showMenu ? 'hidden' : '',
     ]"
   >
     Meny
