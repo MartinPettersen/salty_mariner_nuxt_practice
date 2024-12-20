@@ -28,7 +28,7 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: ['@nuxtjs/sanity'],
+  modules: ['@nuxtjs/sanity','@samk-dev/nuxt-vcalendar'],
   sanity: {
     projectId: process.env.VITE_PROJECT_ID,
     dataset: "production",
