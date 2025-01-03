@@ -53,7 +53,6 @@ const submitOrder = async (event: Event) => {
         <input
           class="w-full text-black"
           placeholder="Ditt Navn"
-          value={name}
           v-model="name"
           required
         />
@@ -63,7 +62,6 @@ const submitOrder = async (event: Event) => {
         <input
           class="w-full text-black"
           placeholder="Din epost"
-          value={email}
           v-model="email"
           required
         />
@@ -73,7 +71,6 @@ const submitOrder = async (event: Event) => {
         <input
           class="w-full text-black"
           placeholder="Ditt Telefon Nummer"
-          value={phoneNumber}
         v-model="phoneNumber"
           required
         />
